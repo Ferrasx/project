@@ -1,0 +1,20 @@
+//quando eu inicializo o prisma migrate dev ele identifica o schema todo e já insere na migration para eu poder fazer alteração no migration.sql
+
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  email    String @unique
+  password String
+
+  name String
+}
